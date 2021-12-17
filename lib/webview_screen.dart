@@ -4,12 +4,14 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 class WebviewScreen extends StatefulWidget {
   final String appId;
   final String publicKey;
+  final String type;
   final Function(dynamic) success;
   final Function(dynamic) error;
   const WebviewScreen({
     Key? key,
     required this.appId,
     required this.publicKey,
+    required this.type,
     required this.success,
     required this.error,
   }) : super(key: key);
@@ -39,6 +41,7 @@ class _WebviewScreenState extends State<WebviewScreen> {
           const options = {
               app_id: "${widget.appId}",
               p_key: "${widget.publicKey}",
+              type: "${widget.type}",
               onSuccess: function (response) {
                window.flutter_inappwebview.callHandler('onSuccessCallback', response)
               },
